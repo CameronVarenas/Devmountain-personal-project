@@ -20,7 +20,7 @@
   margin-left: 3%;
 }
 
-.auth {
+.login {
   margin-top: 6.5%;
   margin-left: 3%;
 }
@@ -35,4 +35,12 @@
 .landing-content {
   padding-top: 5%;
   display: inline-block;
+}
+
+.auth {
+  padding-top: 5%;
+}
+
+.auth-input {
+  
 }
