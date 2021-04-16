@@ -23,7 +23,7 @@ function App() {
         {/* <UserDecks /> */}
         {/* <Flashcard /> */}
         {/* <AddCardToDeck /> */}
-        <CardList />
+        {/* <CardList /> */}
       </div>
     </div>
   );
