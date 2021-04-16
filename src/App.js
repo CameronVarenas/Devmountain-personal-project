@@ -1,6 +1,7 @@
 import './App.css';
 import Landing from './components/Landing';
 import Auth from './components/Auth';
+import UserDecks from './components/UserDecks';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       </header>
       <div className='page-display'>
         {/* <Landing /> */}
-        <Auth />
+        {/* <Auth /> */}
+        <UserDecks />
       </div>
     </div>
   );

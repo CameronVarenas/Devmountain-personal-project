@@ -12,7 +12,7 @@ export default function Auth() {
             </section>
             <section className='login-options'>
                 <button className='login-button'>Login</button>
-                <p className='forgot-pass'>Forgot Password?</p>
+                <p>Forgot Password?</p>
             </section>
 
             <p>Or</p>

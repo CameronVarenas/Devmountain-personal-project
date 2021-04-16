@@ -4,6 +4,8 @@
   overflow: hidden;
 }
 
+/* Main Display */
+
 .header {
   width: 100%;
   background-color: lightgrey; 
@@ -32,10 +34,14 @@
   text-align: center;
 }
 
+/* Landing Page Display */
+
 .landing-content {
   padding-top: 5%;
   display: inline-block;
 }
+
+/* Auth Page Display */
 
 .auth {
   padding-top: 5%;
@@ -60,4 +66,28 @@
 
 .register-button {
   margin-top: 17px;
+}
+
+/* User Decks Display */
+
+.your-decks-header {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.new-deck {
+  margin-left: 95px;
+}
+
+.deck-display {
+  background-color: lightgray;
+  text-align: center;
+  padding: 0px 0px 0px 0px;
+  margin-top: 0px;
+}
+
+.deck-options {
+  padding: 0px 5px 0px 5px;
+  display: inline;
 }
