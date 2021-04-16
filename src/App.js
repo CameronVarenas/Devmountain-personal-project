@@ -4,6 +4,7 @@ import Auth from './components/Auth';
 import UserDecks from './components/UserDecks';
 import Flashcard from './components/Flashcard';
 import AddCardToDeck from './components/AddCardToDeck';
+import CardList from './components/CardList'
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         {/* <Auth /> */}
         {/* <UserDecks /> */}
         {/* <Flashcard /> */}
-        <AddCardToDeck />
+        {/* <AddCardToDeck /> */}
+        <CardList />
       </div>
     </div>
   );

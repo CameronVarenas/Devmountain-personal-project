@@ -117,3 +117,23 @@
   width: 250px;
   height: 30px;
 }
+
+/* Card List Page Display */
+
+.card-list-deck-name {
+  padding-top: 20px;
+}
+
+.card-list-button {
+  margin-top: 20px;
+}
+
+.card-list-inputs {
+  width: 250px;
+  height: 30px;
+}
+
+.card-list-flashcard {
+  display: inline-flex;
+  background-color: lightgray;
+}
