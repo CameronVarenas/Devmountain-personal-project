@@ -3,6 +3,7 @@ import Landing from './components/Landing';
 import Auth from './components/Auth';
 import UserDecks from './components/UserDecks';
 import Flashcard from './components/Flashcard';
+import AddCardToDeck from './components/AddCardToDeck';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         {/* <Landing /> */}
         {/* <Auth /> */}
         {/* <UserDecks /> */}
-        <Flashcard />
+        {/* <Flashcard /> */}
+        <AddCardToDeck />
       </div>
     </div>
   );
