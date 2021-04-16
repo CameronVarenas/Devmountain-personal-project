@@ -2,6 +2,7 @@ import './App.css';
 import Landing from './components/Landing';
 import Auth from './components/Auth';
 import UserDecks from './components/UserDecks';
+import Flashcard from './components/Flashcard';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <div className='page-display'>
         {/* <Landing /> */}
         {/* <Auth /> */}
-        <UserDecks />
+        {/* <UserDecks /> */}
+        <Flashcard />
       </div>
     </div>
   );

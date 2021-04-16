@@ -91,3 +91,14 @@
   padding: 0px 5px 0px 5px;
   display: inline;
 }
+
+/* Flashcard Page Display */
+
+.flashcard {
+  padding-top: 50px;
+}
+
+.flashcard-buttons {
+  margin: 10px;
+  padding: 5px 10px 5px 10px;
+}
