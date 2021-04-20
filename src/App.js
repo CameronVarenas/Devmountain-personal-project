@@ -1,12 +1,7 @@
 import React, {Component} from 'react';
-import {HashRouter} from 'react-router-dom';
+import {HashRouter, Link} from 'react-router-dom';
+import routes from './routes';
 import './App.css';
-import Landing from './components/Landing';
-import Auth from './components/Auth';
-import UserDecks from './components/UserDecks';
-import Flashcard from './components/Flashcard';
-import AddCardToDeck from './components/AddCardToDeck';
-import CardList from './components/CardList'
 
 class App extends Component {
   constructor() {
@@ -19,24 +14,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className='header'>
-          <section className='header-text'>
-            <h1 className='title'>Kioku</h1>
-            <h3 className='options'>Home</h3>
-            <h3 className='options'>About</h3>
-            <h3 className='login'>Log In</h3>
-          </section>
-        </header>
-        <div className='page-display'>
-          <Landing />
-          {/* <Auth /> */}
-          {/* <UserDecks /> */}
-          {/* <Flashcard /> */}
-          {/* <AddCardToDeck /> */}
-          {/* <CardList /> */}
+      <HashRouter>
+        <div className="App">
+          <header className='header'>
+            <section className='header-text'>
+              <h1 className='title'>Kioku</h1>
+              <Link to='/user-decks' className='options'>Home</Link>
+              <Link to='/' className='options'>About</Link>
+              <Link to='/auth' className='login'>Log In</Link>
+            </section>
+          </header>
+          <div className='page-display'>
+            {routes}
+          </div>
         </div>
-      </div>
+      </HashRouter>
     );
   }
 }
