@@ -4,7 +4,8 @@ const express = require('express'),
       cardController = require('./controllers/cardController'),
       decksController = require('./controllers/decksController'),
       massive = require('massive'),
-      session = require('express-session');
+      session = require('express-session'),
+      auth = require('./middleware/authMiddleware');
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
@@ -30,6 +31,9 @@ app.use(
 );
 
 //Auth Endpoints
+app.post('/auth/register', authController.register)
+app.post('/auth/login', authController.login)
+app.get('/auth/logout', authController.logout)
 
 //Card Endpoints
 
