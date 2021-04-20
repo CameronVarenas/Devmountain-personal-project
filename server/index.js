@@ -36,8 +36,17 @@ app.post('/auth/login', authController.login)
 app.get('/auth/logout', authController.logout)
 
 //Card Endpoints
+// app.get('/api/flashcards/:card_id', )
+// app.post('/api/flashcards/', {card_front: '', card_back: ''})
+// app.put('/api/flashcards/', {card_front: '', card_back: ''})
+// app.delete('/api/flashcards/:card_id', )
 
 //Deck Endpoints
+// app.get('/api/decks/', )
+// app.get('/api/decks/:deck_id', )
+// app.post('/api/decks/', {deck_name: ''})
+// app.put('/api/decks/:deck_id', {deck_name: ''})
+// app.delete('/api/decks/:deck_id', )
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server listening on port: ${SERVER_PORT}`);
