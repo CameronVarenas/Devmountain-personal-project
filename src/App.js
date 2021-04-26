@@ -6,16 +6,23 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
-
     this.state = {
+      user: {},
+    };
+    this.updateUser = this.updateUser.bind(this);
+  }
 
-    }
+  updateUser(user) {
+    this.setState({
+      user,
+    });
   }
 
   render() {
+    const {user} = this.state;
     return (
       <HashRouter>
-        <div className="App">
+        <div className='App'>
           <header className='header'>
             <section className='header-text'>
               <h1 className='title'>Kioku</h1>

@@ -1,38 +1,131 @@
-import React from 'react'
+import React, {Component} from 'react';
+import axios from 'axios';
 
-export default function Auth() {
-    return (
-        <div className='auth'>
-            <h3>Login</h3>
-            <section>
-                <input className='auth-input' placeholder='Username or Email'></input>
-            </section>
-            <section>
-                <input className='auth-input' placeholder='Password'></input>
-            </section>
-            <section className='login-options'>
-                <button className='login-button'>Login</button>
-                <p>Forgot Password?</p>
-            </section>
+export default class Auth extends Component {
+    constructor() {
+        super();
+        this.state = {
+            username: '',
+            password: '',
+            register_username: '',
+            register_password: '',
+            register_password_reType: '',
+            register_email: '',
+        };
+        this.login = this.login.bind(this);
+    }
 
-            <p>Or</p>
+    handleLoginUsernameInput(e) {
+        this.setState({username: e.target.value});
+    }
 
-            <h3>Register Now</h3>
-            <section>
-                <input className='auth-input' placeholder='Username'></input>
-            </section>
-            <section>
-                <input className='auth-input' placeholder='Email Address'></input>
-            </section>
-            <section>
-                <input className='auth-input' placeholder='Password'></input>
-            </section>
-            <section>
-                <input className='auth-input' placeholder='Re-Type Password'></input>
-            </section>
-            <section className='register-button'>
-                <button>Register</button>
-            </section>
-        </div>
-    )
+    handleLoginPasswordInput(e) {
+        this.setState({password: e.target.value});
+    }
+
+    handleRegisterUsernameInput(e) {
+        this.setState({register_username: e.target.value});
+    }
+
+    handleRegisterEmailInput(e) {
+        this.setState({register_email: e.target.value});
+    }
+
+    handleRegisterPasswordInput(e) {
+        this.setState({register_password: e.target.value});
+    }
+
+    handleRegisterRetypePasswordInput(e) {
+        this.setState({register_password_reType: e.target.value});
+    }
+
+    login() {
+        const {username, password} = this.state;
+        axios
+            .post('/auth/login', {username, password})
+            .then(user => {
+                this.setState({username: '', password: ''});
+                this.props.updateUser(user.data);
+            })
+            .catch(error => {
+                this.setState({username: '', password: ''});
+                alert(error.response.request.response);
+            });
+    }
+
+    render() {
+        return (
+            <div className='auth'>
+                <h3>Login</h3>
+                <section>
+                    <input
+                        className='auth-input'
+                        type='text'
+                        placeholder='Username'
+                        onChange={e => this.handleLoginUsernameInput(e)}
+                        value={this.state.username}
+                    ></input>
+                </section>
+                <section>
+                    <input
+                        className='auth-input'
+                        type='text'
+                        placeholder='Password'
+                        onChange={e => this.handleLoginPasswordInput(e)}
+                        value={this.state.password}
+                    ></input>
+                </section>
+                <section className='login-options'>
+                    <button
+                        className='login-button'
+                        onClick={() => this.Login()}
+                    >Login</button>
+                    <p>Forgot Password?</p>
+                </section>
+    
+                <p>Or</p>
+    
+                <h3>Register Now</h3>
+                <section>
+                    <input
+                        className='auth-input'
+                        type='text'
+                        placeholder='Username'
+                        onChange={e => this.handleRegisterUsernameInput(e)}
+                        value={this.state.register_username}
+                    ></input>
+                </section>
+                <section>
+                    <input
+                        className='auth-input'
+                        type='text'
+                        placeholder='Email Address'
+                        onChange={e => this.handleRegisterEmailInput(e)}
+                        value={this.state.register_email}
+                    ></input>
+                </section>
+                <section>
+                    <input
+                        className='auth-input'
+                        type='text'
+                        placeholder='Password'
+                        onChange={e => this.handleRegisterPasswordInput(e)}
+                        value={this.state.register_password}
+                    ></input>
+                </section>
+                <section>
+                    <input
+                        className='auth-input'
+                        type='text'
+                        placeholder='Re-Type Password'
+                        onChange={e => this.handleRegisterRetypePasswordInput(e)}
+                        value={this.state.register_password_reType}
+                    ></input>
+                </section>
+                <section className='register-button'>
+                    <button>Register</button>
+                </section>
+            </div>
+        )
+    }
 }
