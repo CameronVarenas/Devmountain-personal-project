@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {HashRouter, Link} from 'react-router-dom';
 import routes from './routes';
 import './App.css';
+import {connect} from 'react-redux';
+import {updateUser} from './redux/user_reducer';
 
 class App extends Component {
   constructor() {
@@ -40,4 +42,6 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps, {updateUser})(App);

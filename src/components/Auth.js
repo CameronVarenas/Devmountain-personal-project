@@ -78,7 +78,7 @@ export default class Auth extends Component {
                 <section className='login-options'>
                     <button
                         className='login-button'
-                        onClick={() => this.Login()}
+                        onClick={() => this.login()}
                     >Login</button>
                     <p>Forgot Password?</p>
                 </section>
