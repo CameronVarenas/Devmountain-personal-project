@@ -55,6 +55,35 @@ class Auth extends Component {
             });
     }
 
+    register() {
+        const {
+            register_username,
+            register_email,
+            register_password,
+            // register_password_reType
+        } = this.state;
+        axios
+            .post('/auth/register', {
+                register_username,
+                register_email,
+                register_password,
+                // register_password_reType
+            })
+            .then(user => {
+                this.props.updateUser(user.data);
+                this.props.history.push('/user-decks');
+            })
+            .catch(error => {
+                this.setState({
+                    register_username: '',
+                    register_email: '',
+                    register_password: '',
+                    // register_password_reType: ''
+                });
+                alert(error.response.request.response);
+            });
+    }
+
     render() {
         return (
             <div className='auth'>
@@ -125,7 +154,9 @@ class Auth extends Component {
                     ></input>
                 </section>
                 <section className='register-button'>
-                    <button>Register</button>
+                    <button
+                        onClick={() => this.register()}
+                    >Register</button>
                 </section>
             </div>
         )

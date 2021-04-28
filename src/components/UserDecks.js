@@ -1,7 +1,11 @@
 import React from 'react'
-import {HashRouter, Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import {HashRouter, Link, Redirect} from 'react-router-dom';
 
-export default function UserDecks() {
+function UserDecks(props) {
+    if (!props.user) {
+        return <Redirect to='/' />
+    }
     return (
         <div>
             <section className='your-decks-header'>
@@ -23,3 +27,7 @@ export default function UserDecks() {
         </div>
     )
 }
+
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps)(UserDecks)

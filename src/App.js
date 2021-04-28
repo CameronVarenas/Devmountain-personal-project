@@ -5,6 +5,7 @@ import './App.css';
 import {connect} from 'react-redux';
 import {updateUser} from './redux/user_reducer';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 
 class App extends Component {
 
@@ -13,6 +14,15 @@ class App extends Component {
       .get('/auth/session')
       .then(user => {
         this.props.updateUser(user.data);
+      })
+  }
+
+  logout() {
+    axios
+      .get('/auth/logout')
+      .then(() => {
+        this.props.updateUser(null);
+        this.props.history.push('/');
       })
   }
 
@@ -26,6 +36,7 @@ class App extends Component {
               <Link to='/user-decks' className='options'>Home</Link>
               <Link to='/' className='options'>About</Link>
               <Link to='/auth' className='login'>Log In</Link>
+              <button onClick={() => this.logout()}>Logout</button>
             </section>
           </header>
           <div className='page-display'>
@@ -39,4 +50,4 @@ class App extends Component {
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, {updateUser})(App);
+export default withRouter(connect(mapStateToProps, {updateUser})(App));

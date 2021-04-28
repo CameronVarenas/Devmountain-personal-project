@@ -9,16 +9,17 @@ module.exports = {
     },
 
     register: async (req, res) => {
-        const {username, email, password} = req.body;
+        const {register_username, register_email, register_password} = req.body;
         const db = req.app.get('db');
-        const result = await db.users.find_user_by_username([username]);
+        const result = await db.users.find_user_by_username([register_username]);
         const existingUser = result[0];
         if (existingUser) {
             return res.status(409).send('Username taken');
         }
         const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync(password, salt);
-        const registeredUser = await db.users.create_user([username, email, hash]);
+        console.log(register_password, salt)
+        const hash = bcrypt.hashSync(register_password, salt);
+        const registeredUser = await db.users.create_user([register_username, register_email, hash]);
         const user = registeredUser[0];
         console.log(user)
         req.session.user = {username: user.username, email: user.email, id: user.user_id};
