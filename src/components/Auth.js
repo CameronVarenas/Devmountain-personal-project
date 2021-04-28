@@ -44,10 +44,10 @@ class Auth extends Component {
     login() {
         const {username, password} = this.state;
         axios
-            .post('http://localhost:5050/auth/login', {username, password})
+            .post('/auth/login', {username, password})
             .then(user => {
-                this.setState({username: '', password: ''});
                 this.props.updateUser(user.data);
+                this.props.history.push('/user-decks')
             })
             .catch(error => {
                 this.setState({username: '', password: ''});

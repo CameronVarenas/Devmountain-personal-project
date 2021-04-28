@@ -4,8 +4,18 @@ import routes from './routes';
 import './App.css';
 import {connect} from 'react-redux';
 import {updateUser} from './redux/user_reducer';
+import axios from 'axios';
 
 class App extends Component {
+
+  componentDidMount() {
+    axios
+      .get('/auth/session')
+      .then(user => {
+        this.props.updateUser(user.data);
+      })
+  }
+
   render() {
     return (
       <HashRouter>

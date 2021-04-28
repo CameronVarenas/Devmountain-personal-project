@@ -35,6 +35,7 @@ app.use(
 app.post('/auth/register', authController.register)
 app.post('/auth/login', authController.login)
 app.get('/auth/logout', authController.logout)
+app.get('/auth/session', authController.getSession)
 
 //Card Endpoints
 app.get('/api/flashcards/:card_id', auth.usersOnly, cardController.getFlashcard)
