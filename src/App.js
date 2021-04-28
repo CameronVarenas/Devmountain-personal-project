@@ -6,22 +6,7 @@ import {connect} from 'react-redux';
 import {updateUser} from './redux/user_reducer';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      user: {},
-    };
-    this.updateUser = this.updateUser.bind(this);
-  }
-
-  updateUser(user) {
-    this.setState({
-      user,
-    });
-  }
-
   render() {
-    const {user} = this.state;
     return (
       <HashRouter>
         <div className='App'>

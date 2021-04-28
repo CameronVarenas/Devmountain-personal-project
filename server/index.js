@@ -5,13 +5,14 @@ const express = require('express'),
       decksController = require('./controllers/decksController'),
       massive = require('massive'),
       session = require('express-session'),
-      auth = require('./middleware/authMiddleware');
+      auth = require('./middleware/authMiddleware'),
+      cors = require('cors');
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json(), cors());
 
 massive({
     connectionString: CONNECTION_STRING,

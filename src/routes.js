@@ -1,5 +1,5 @@
 import react from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import Landing from './components/Landing';
 import Auth from './components/Auth';
 import UserDecks from './components/UserDecks';

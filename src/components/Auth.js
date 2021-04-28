@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {updateUser} from '../redux/user_reducer';
 
-export default class Auth extends Component {
+class Auth extends Component {
     constructor() {
         super();
         this.state = {
@@ -42,7 +44,7 @@ export default class Auth extends Component {
     login() {
         const {username, password} = this.state;
         axios
-            .post('/auth/login', {username, password})
+            .post('http://localhost:5050/auth/login', {username, password})
             .then(user => {
                 this.setState({username: '', password: ''});
                 this.props.updateUser(user.data);
@@ -129,3 +131,5 @@ export default class Auth extends Component {
         )
     }
 }
+
+export default connect(state => state, {updateUser})(Auth);
