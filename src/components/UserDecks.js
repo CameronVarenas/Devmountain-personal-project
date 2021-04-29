@@ -36,7 +36,7 @@ class UserDecks extends Component {
     }
 
     createDeck() {
-        const {deckName} = this.state.deckName
+        const {deckName} = this.state
         axios
             .post('/api/decks/', {deckName})
             .then(() => {

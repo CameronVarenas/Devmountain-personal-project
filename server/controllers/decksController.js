@@ -10,9 +10,10 @@ module.exports = {
     },
 
     addDeck: async (req, res) => {
-        const {deckName, user_id} = req.body;
-        db.decks.add_deck_to_user([deckName, user_id]);
-        return res.status(201)
+        const {deckName} = req.body;
+        const db = req.app.get('db');
+        const result = await db.decks.add_deck_to_user([deckName, req.session.user.id]);
+        return res.status(201).send(result)
     },
 
     updateDeck: async (req, res) => {
