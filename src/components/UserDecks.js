@@ -11,6 +11,7 @@ class UserDecks extends Component {
             deckName: '',
             userDecks: []
         }
+        this.deleteDeck = this.deleteDeck.bind(this)
     }
 
     componentDidMount() {
@@ -47,9 +48,18 @@ class UserDecks extends Component {
             })
     }
 
+    deleteDeck(deck_id) {
+        axios
+            .delete(`/api/decks/${deck_id}`)
+            .then(alert('Deck deleted'))
+            .catch((error) => {
+                alert(error.response.request.response)
+            })
+    }
+
     render() {
         const decksMapped = this.state.userDecks.map(deck => {
-            return <MappedDecks deck={deck}/>
+            return <MappedDecks deck={deck} deleteDeck={this.deleteDeck}/>
         })
 
             return (

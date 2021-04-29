@@ -21,6 +21,9 @@ module.exports = {
     },
 
     deleteDeck: async (req, res) => {
-
+        const {deck_id} = req.params;
+        const db = req.app.get('db');
+        const result = await db.decks.delete_users_deck([deck_id, req.session.user.id]);
+        return res.status(201).send(result)
     }
 };
