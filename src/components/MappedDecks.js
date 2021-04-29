@@ -12,7 +12,10 @@ export default function MappedDecks(props) {
             <Link to='add-card' className='deck-options'>Add Card</Link>
             <Link to='card-list' className='deck-options'>View Cards</Link>
             <h5 className='deck-options'>Rename Deck</h5>
-            <h5 className='deck-options'>Delete Deck</h5>
+            <button
+                className='deck-options'
+                onClick={() => props.deleteDeck(props.deck.deck_id)}
+            >Delete Deck</button>
         </div>
     </section>
     )

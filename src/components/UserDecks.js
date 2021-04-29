@@ -51,7 +51,7 @@ class UserDecks extends Component {
     deleteDeck(deck_id) {
         axios
             .delete(`/api/decks/${deck_id}`)
-            .then(alert('Deck deleted'))
+            .then()
             .catch((error) => {
                 alert(error.response.request.response)
             })
@@ -59,7 +59,10 @@ class UserDecks extends Component {
 
     render() {
         const decksMapped = this.state.userDecks.map(deck => {
-            return <MappedDecks deck={deck} deleteDeck={this.deleteDeck}/>
+            return <MappedDecks
+                deck={deck}
+                deleteDeck={this.deleteDeck}
+            />
         })
 
             return (
