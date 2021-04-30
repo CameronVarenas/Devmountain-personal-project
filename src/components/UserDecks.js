@@ -41,7 +41,8 @@ class UserDecks extends Component {
         axios
             .post('/api/decks/', {deckName})
             .then(() => {
-                this.setState({deckName: ''})
+                this.setState({deckName: ''});
+                this.getDecks();
             })
             .catch((error) => {
                 alert(error.response.request.response)
@@ -51,7 +52,7 @@ class UserDecks extends Component {
     renameDeck(deck_id) {
         axios
             .put(`/api/decks/${deck_id}`)
-            .then()
+            .then(() => this.getDecks())
             .catch((error) => {
                 alert(error.response.request.response)
             })
@@ -60,7 +61,7 @@ class UserDecks extends Component {
     deleteDeck(deck_id) {
         axios
             .delete(`/api/decks/${deck_id}`)
-            .then()
+            .then(() => this.getDecks())
             .catch((error) => {
                 alert(error.response.request.response)
             })
