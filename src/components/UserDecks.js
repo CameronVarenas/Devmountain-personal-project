@@ -48,6 +48,15 @@ class UserDecks extends Component {
             })
     }
 
+    renameDeck(deck_id) {
+        axios
+            .put(`/api/decks/${deck_id}`)
+            .then()
+            .catch((error) => {
+                alert(error.response.request.response)
+            })
+    }
+
     deleteDeck(deck_id) {
         axios
             .delete(`/api/decks/${deck_id}`)

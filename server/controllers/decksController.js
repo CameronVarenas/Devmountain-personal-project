@@ -6,7 +6,7 @@ module.exports = {
     },
 
     getOneDeck: async (req, res) => {
-
+        
     },
 
     addDeck: async (req, res) => {
@@ -17,7 +17,11 @@ module.exports = {
     },
 
     updateDeck: async (req, res) => {
-
+        const deck_id = req.params.id;
+        const {newName} = req.body;
+        const db = req.app.get('db');
+        const result = await db.decks.rename_users_deck([newName, deck_id]);
+        return res.status(201).send(result)
     },
 
     deleteDeck: async (req, res) => {

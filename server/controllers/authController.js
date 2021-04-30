@@ -33,7 +33,6 @@ module.exports = {
         if(!user) {
             return res.status(401).send('User not found');
         }
-        console.log(password, user.hash)
         const isAuthenticated = bcrypt.compareSync(password, user.password);
         if(!isAuthenticated) {
             return res.status(403).send('Incorrect password');
