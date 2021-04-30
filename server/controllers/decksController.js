@@ -6,7 +6,10 @@ module.exports = {
     },
 
     getOneDeck: async (req, res) => {
-        
+        const {deck_id} = req.params;
+        const db = req.app.get('db');
+        const result = await db.decks.get_one_users_decks([req.session.user.id, deck_id]);
+        return res.status(201).send(result)
     },
 
     addDeck: async (req, res) => {
