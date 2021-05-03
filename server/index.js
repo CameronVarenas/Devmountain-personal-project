@@ -38,9 +38,10 @@ app.get('/auth/logout', authController.logout)
 app.get('/auth/session', authController.getSession)
 
 //Card Endpoints
-app.get('/api/flashcards/:card_id', auth.usersOnly, cardController.getFlashcard)
-app.post('/api/flashcards/', auth.usersOnly, cardController.addCard)
-app.put('/api/flashcards/', auth.usersOnly, cardController.updateCard)
+app.get('/api/flashcards/:deck_id', auth.usersOnly, cardController.getAllFlashcards)
+app.get('/api/flashcards/', auth.usersOnly, cardController.getFlashcard)
+app.post('/api/flashcards/:deck_id', auth.usersOnly, cardController.addCard)
+app.put('/api/flashcards/:card_id', auth.usersOnly, cardController.updateCard)
 app.delete('/api/flashcards/:card_id', auth.usersOnly, cardController.deleteCard)
 
 //Deck Endpoints
