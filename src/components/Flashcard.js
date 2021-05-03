@@ -26,18 +26,27 @@ class Flashcard extends Component {
     }
 
     render() {
+        const showAnswer = this.state.showAnswer;
         return (
             <div className='flashcard'>
                 <section>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </section>
-                <button className='flashcard-buttons'>Show Answer</button>
-                <p className='flashcard'>-------------------------------------------------------</p>
-                <section className='flashcard'>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </section>
+                <button
+                    className='flashcard-buttons'
+                    onClick={() => {
+                        this.state.showAnswer === false ?
+                        this.setState({showAnswer: true}) :
+                        this.setState({showAnswer: false})
+                    }}
+                >Show Answer</button>
+                <p 
+                className='flashcard'>-------------------------------------------------------</p>       
                 <button className='flashcard-buttons'>Previous</button>
                 <button className='flashcard-buttons'>Next</button>
+                <section className='flashcard'>
+                    {showAnswer ? <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> : null}
+                </section>
             </div>
         )
     }
