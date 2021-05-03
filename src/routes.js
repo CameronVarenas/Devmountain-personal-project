@@ -12,7 +12,7 @@ export default (
         <Route exact path='/' component={Landing} />
         <Route path='/auth' component={Auth} />
         <Route path='/user-decks' component={UserDecks} />
-        <Route path='/flashcard' component={Flashcard} />
+        <Route path='/flashcard/:deck_id' component={Flashcard} />
         <Route path='/add-card' component={AddCardToDeck} />
         <Route path='/card-list' component={CardList} />
     </Switch>

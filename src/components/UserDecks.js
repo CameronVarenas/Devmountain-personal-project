@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import MappedDecks from './MappedDecks';
 
@@ -32,7 +32,6 @@ class UserDecks extends Component {
                 this.setState({userDecks: res.data});
             })
             .catch(error => {
-                console.log('get decks hit')
                 alert(error)
             })
     }

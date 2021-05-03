@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Flashcard from './Flashcard';
 
 class MappedDecks extends Component {
     constructor() {
@@ -20,7 +21,10 @@ class MappedDecks extends Component {
                 <h5>{this.props.deck.name}</h5>
             </div>
             <div>
-                <Link to='/flashcard' className='deck-options'>Study</Link>
+                <Link
+                    to={`/flashcard/${this.props.deck.deck_id}`}
+                    className='deck-options'
+                >Study</Link>
                 <Link to='add-card' className='deck-options'>Add Card</Link>
                 <Link to='card-list' className='deck-options'>View Cards</Link>
                 <button
