@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import MappedDecks from './MappedDecks';
 
@@ -11,7 +10,8 @@ class UserDecks extends Component {
             deckName: '',
             userDecks: []
         }
-        this.deleteDeck = this.deleteDeck.bind(this)
+        this.deleteDeck = this.deleteDeck.bind(this);
+        this.renameDeck = this.renameDeck.bind(this);
     }
 
     componentDidMount() {
@@ -32,7 +32,8 @@ class UserDecks extends Component {
                 this.setState({userDecks: res.data});
             })
             .catch(error => {
-                alert(error.response.request.response)
+                console.log('get decks hit')
+                alert(error)
             })
     }
 
@@ -49,12 +50,13 @@ class UserDecks extends Component {
             })
     }
 
-    renameDeck(deck_id) {
+    renameDeck(deck_id, deckNewName) {
         axios
-            .put(`/api/decks/${deck_id}`)
+            .put(`/api/decks/${deck_id}`, {deckNewName})
             .then(() => this.getDecks())
             .catch((error) => {
-                alert(error.response.request.response)
+                console.log(this)
+                alert(error)
             })
     }
 
@@ -72,6 +74,7 @@ class UserDecks extends Component {
             return <MappedDecks
                 deck={deck}
                 deleteDeck={this.deleteDeck}
+                renameDeck={this.renameDeck}
             />
         })
 

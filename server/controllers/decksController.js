@@ -20,10 +20,10 @@ module.exports = {
     },
 
     updateDeck: async (req, res) => {
-        const deck_id = req.params.id;
-        const {name} = req.body;
+        const {deck_id} = req.params;
+        const {deckNewName} = req.body;
         const db = req.app.get('db');
-        await db.decks.rename_users_deck([name, deck_id]);
+        await db.decks.rename_users_deck([deckNewName, deck_id]);
         return res.sendStatus(201)
     },
 
