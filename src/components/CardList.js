@@ -37,6 +37,10 @@ class CardList extends Component {
             <div>
                 <h3 className='card-list-deck-name'>Your Flashcards</h3>
                 <section className='mapped-cards-section'>
+                    <section className='mapped-cards-headers'>
+                        <h5>Front:</h5>
+                        <h5 className='mapped-cards-back'>Back:</h5>
+                    </section>
                     {cardsMapped}
                 </section>
                 <h3>Edit Card:</h3>

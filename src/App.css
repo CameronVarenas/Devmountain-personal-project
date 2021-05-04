@@ -147,6 +147,15 @@
   margin: 1% 5% 1% 5%;
 }
 
+.mapped-cards-headers {
+  display: flex;
+  margin-left: 80px;
+}
+
+.mapped-cards-back {
+  margin-left: 105px;
+}
+
 .mapped-cards {
   display: flex;
   margin: 1% 5% 1% 5%;
