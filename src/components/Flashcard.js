@@ -30,6 +30,24 @@ class Flashcard extends Component {
             })
     }
 
+    nextCard() {
+        this.setState({showAnswer: false});
+        this.state.currentCard === this.state.flashcardData.length - 1 ? 
+        this.setState({currentCard: 0}) :
+        this.setState({currentCard: ++this.state.currentCard});
+        this.setState({currentCardFront: this.state.flashcardData[this.state.currentCard].card_front});
+        this.setState({currentCardBack: this.state.flashcardData[this.state.currentCard].card_back});
+    }
+
+    previousCard() {
+        this.setState({showAnswer: false});
+        this.state.currentCard === 0 ? 
+        this.setState({currentCard: this.state.flashcardData.length - 1}) :
+        this.setState({currentCard: --this.state.currentCard});
+        this.setState({currentCardFront: this.state.flashcardData[this.state.currentCard].card_front});
+        this.setState({currentCardBack: this.state.flashcardData[this.state.currentCard].card_back});
+    }
+
     render() {
         const showAnswer = this.state.showAnswer;
         return (
@@ -46,8 +64,14 @@ class Flashcard extends Component {
                     }}
                 >Show Answer</button>
                 <p className='flashcard'>-------------------------------------------------------</p>       
-                <button className='flashcard-buttons'>Previous</button>
-                <button className='flashcard-buttons'>Next</button>
+                <button
+                    className='flashcard-buttons'
+                    onClick={() => this.previousCard()}
+                >Previous</button>
+                <button
+                    className='flashcard-buttons'
+                    onClick={() => this.nextCard()}
+                >Next</button>
                 <section className='flashcard'>
                     {showAnswer ? <p>{this.state.currentCardBack}</p> : null}
                 </section>
