@@ -137,3 +137,36 @@
   display: inline-flex;
   background-color: lightgray;
 }
+
+/* Mapped Flashcards */
+
+.mapped-cards-section {
+  overflow: scroll;
+  height: 40vh;
+  border: 1px solid grey;
+  margin: 1% 5% 1% 5%;
+}
+
+.mapped-cards {
+  display: flex;
+  margin: 1% 5% 1% 5%;
+  background-color: darkgray;
+  height: auto;
+  width: auto;
+}
+
+.mapped-cards-content {
+  margin: 20px;
+  width: 100px;
+  overflow-y: hidden;
+}
+
+.mapped-cards-buttons {
+  margin-right: 5%;
+  position:sticky;
+  left: 400px;
+}
+
+.mapped-cards-edit {
+  margin: 20px;
+}

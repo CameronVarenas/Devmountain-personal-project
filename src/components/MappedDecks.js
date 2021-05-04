@@ -29,7 +29,7 @@ class MappedDecks extends Component {
                     className='deck-options'
                 >Add Card</Link>
                 <Link
-                    to={`/card-list/${this.props.deck.name}`}
+                    to={`/card-list/${this.props.deck.deck_id}`}
                     className='deck-options'
                 >View Cards</Link>
                 <button
