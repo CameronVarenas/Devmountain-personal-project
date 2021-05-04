@@ -11,7 +11,8 @@ class CardList extends Component {
             card_back: '',
             card_id: null
         }
-        this.updateFlashcard = this.updateFlashcard.bind(this);
+        this.getCardIdToEdit = this.getCardIdToEdit.bind(this);
+        this.deleteFlashcard = this.deleteFlashcard.bind(this);
     }
 
     componentDidMount() {
@@ -51,8 +52,13 @@ class CardList extends Component {
             })
     }
 
-    deleteFlashcard() {
-
+    deleteFlashcard(card_id) {
+        axios
+            .delete(`/api/flashcards/${card_id}`)
+            .then(() => this.getAllFlashcards())
+            .catch(error => {
+                alert(error)
+            })
     }
 
     render() {
@@ -60,6 +66,7 @@ class CardList extends Component {
             return <MappedCards
                 card={card}
                 getCardIdToEdit={this.getCardIdToEdit}
+                deleteFlashcard={this.deleteFlashcard}
             />
         })
         return (

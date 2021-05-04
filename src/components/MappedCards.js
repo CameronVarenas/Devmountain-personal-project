@@ -11,6 +11,7 @@ export default function MappedCards(props) {
                     onClick={() => props.getCardIdToEdit(props.card.card_id)}
                 >Edit Card</button>
                 <button
+                    onClick={() => props.deleteFlashcard(props.card.card_id)}
                 >Delete Card</button>
             </section>
         </div>
