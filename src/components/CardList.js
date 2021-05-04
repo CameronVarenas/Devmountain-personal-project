@@ -8,12 +8,22 @@ class CardList extends Component {
         this.state = {
             flashcardData: [],
             card_front: '',
-            card_back: ''
+            card_back: '',
+            card_id: null
         }
+        this.updateFlashcard = this.updateFlashcard.bind(this);
     }
 
     componentDidMount() {
         this.getAllFlashcards();
+    }
+
+    handleCardFrontInput(e) {
+        this.setState({card_front: e.target.value});
+    }
+
+    handleCardBackInput(e) {
+        this.setState({card_back: e.target.value});
     }
 
     getAllFlashcards() {
@@ -27,10 +37,29 @@ class CardList extends Component {
             })
     }
 
+    getCardIdToEdit(card_id) {
+        this.setState({card_id: card_id});
+    }
+
+    updateFlashcard() {
+        const {card_front, card_back, card_id} = this.state;
+        axios
+            .put(`api/flashcards/${card_id}`, {card_front, card_back})
+            .then(() => this.getAllFlashcards())
+            .catch(error => {
+                alert(error)
+            })
+    }
+
+    deleteFlashcard() {
+
+    }
+
     render() {
         const cardsMapped = this.state.flashcardData.map(card => {
             return <MappedCards
                 card={card}
+                getCardIdToEdit={this.getCardIdToEdit}
             />
         })
         return (
@@ -46,11 +75,24 @@ class CardList extends Component {
                 <h3>Edit Card:</h3>
                 <section>
                     <h4>Front:</h4>
-                    <input className='card-list-inputs' placeholder='Card-Front'></input>
+                    <input
+                        className='card-list-inputs'
+                        placeholder='Card-Front'
+                        onChange={e => this.handleCardFrontInput(e)}
+                        value={this.state.card_front}
+                    ></input>
                     <h4>Back:</h4>
-                    <input className='card-list-inputs' placeholder='Card-Back'></input>
+                    <input
+                        className='card-list-inputs'
+                        placeholder='Card-Back'
+                        onChange={e => this.handleCardBackInput(e)}
+                        value={this.state.card_back}
+                    ></input>
                 </section>
-                <button className='card-list-button'>Update Card</button>
+                <button
+                    className='card-list-button'
+                    onClick={() => {this.updateFlashcard()}}
+                >Update Card</button>
             </div>
         )
     }

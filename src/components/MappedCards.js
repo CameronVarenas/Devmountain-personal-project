@@ -8,6 +8,7 @@ export default function MappedCards(props) {
             <section className='mapped-cards-buttons'>
                 <button
                     className='mapped-cards-edit'
+                    onClick={() => props.getCardIdToEdit(props.card.card_id)}
                 >Edit Card</button>
                 <button
                 >Delete Card</button>
