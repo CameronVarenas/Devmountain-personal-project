@@ -46,7 +46,10 @@ class CardList extends Component {
         const {card_front, card_back, card_id} = this.state;
         axios
             .put(`api/flashcards/${card_id}`, {card_front, card_back})
-            .then(() => this.getAllFlashcards())
+            .then(() => {
+                this.getAllFlashcards();
+                this.setState({card_front: '', card_back: ''});
+            })
             .catch(error => {
                 alert(error)
             })
