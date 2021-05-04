@@ -6,7 +6,10 @@ class Flashcard extends Component {
         super();
         this.state = {
             showAnswer: false,
-            flashcardData: []
+            flashcardData: [],
+            currentCard: 0,
+            currentCardFront: '',
+            currentCardBack: ''
         }
     }
 
@@ -18,7 +21,9 @@ class Flashcard extends Component {
         axios
             .get(`api/flashcards/${this.props.match.params.deck_id}`)
             .then(res => {
-                this.setState({flashcardData: res.data})
+                this.setState({flashcardData: res.data});
+                this.setState({currentCardFront: res.data[this.state.currentCard].card_front});
+                this.setState({currentCardBack: res.data[this.state.currentCard].card_back});
             })
             .catch(error => {
                 alert(error);
@@ -30,7 +35,7 @@ class Flashcard extends Component {
         return (
             <div className='flashcard'>
                 <section>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>{this.state.currentCardFront}</p>
                 </section>
                 <button
                     className='flashcard-buttons'
@@ -40,12 +45,11 @@ class Flashcard extends Component {
                         this.setState({showAnswer: false})
                     }}
                 >Show Answer</button>
-                <p 
-                className='flashcard'>-------------------------------------------------------</p>       
+                <p className='flashcard'>-------------------------------------------------------</p>       
                 <button className='flashcard-buttons'>Previous</button>
                 <button className='flashcard-buttons'>Next</button>
                 <section className='flashcard'>
-                    {showAnswer ? <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> : null}
+                    {showAnswer ? <p>{this.state.currentCardBack}</p> : null}
                 </section>
             </div>
         )
