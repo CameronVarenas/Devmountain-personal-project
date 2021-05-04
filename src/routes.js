@@ -14,6 +14,6 @@ export default (
         <Route path='/user-decks' component={UserDecks} />
         <Route path='/flashcard/:deck_id' component={Flashcard} />
         <Route path='/add-card/:deck_id' component={AddCardToDeck} />
-        <Route path='/card-list' component={CardList} />
+        <Route path='/card-list/:name' component={CardList} />
     </Switch>
 )

@@ -28,7 +28,10 @@ class MappedDecks extends Component {
                     to={`/add-card/${this.props.deck.deck_id}`}
                     className='deck-options'
                 >Add Card</Link>
-                <Link to='card-list' className='deck-options'>View Cards</Link>
+                <Link
+                    to={`/card-list/${this.props.deck.name}`}
+                    className='deck-options'
+                >View Cards</Link>
                 <button
                     className='deck-options'
                     onClick={() => {
