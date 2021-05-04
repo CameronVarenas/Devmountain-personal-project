@@ -13,18 +13,13 @@
 
 .header-text {
   display: flex;
+  align-items: center;
   margin-left: 3%;
   margin-right: 3%;
 }
 
 .options {
-  margin-top: 6.5%;
-  margin-left: 3%;
-}
-
-.login {
-  margin-top: 6.5%;
-  margin-left: 3%;
+  margin-left: 25px;
 }
 
 .page-display {

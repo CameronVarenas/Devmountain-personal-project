@@ -144,7 +144,7 @@ class Auth extends Component {
                         value={this.state.register_password}
                     ></input>
                 </section>
-                <section>
+                {/* <section>
                     <input
                         className='auth-input'
                         type='text'
@@ -152,7 +152,7 @@ class Auth extends Component {
                         onChange={e => this.handleRegisterRetypePasswordInput(e)}
                         value={this.state.register_password_reType}
                     ></input>
-                </section>
+                </section> */}
                 <section className='register-button'>
                     <button
                         onClick={() => this.register()}

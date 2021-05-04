@@ -32,11 +32,23 @@ class App extends Component {
         <div className='App'>
           <header className='header'>
             <section className='header-text'>
-              <h1 className='title'>Kioku</h1>
-              <Link to='/user-decks' className='options'>Home</Link>
-              <Link to='/' className='options'>About</Link>
-              <Link to='/auth' className='login'>Log In</Link>
-              <button onClick={() => this.logout()}>Logout</button>
+              <h1>Kioku</h1>
+              <h3><Link
+                to='/user-decks'
+                className='options'
+              >Home</Link></h3>
+              <h3><Link
+                to='/'
+                className='options'
+              >About</Link></h3>
+              <h3><Link
+                to='/auth'
+                className='options'
+              >Log In</Link></h3>
+              <h3><button
+                className='options'
+                onClick={() => this.logout()}
+              >Logout</button></h3>
             </section>
           </header>
           <div className='page-display'>
