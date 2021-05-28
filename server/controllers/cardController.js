@@ -15,9 +15,9 @@ module.exports = {
 
     addCard: async (req, res) => {
         const {deck_id} = req.params
-        const {card_front, card_back} = req.body;
+        const {cardFront, cardBack} = req.body;
         const db = req.app.get('db');
-        const result = await db.cards.add_card_to_deck([card_front, card_back, deck_id]);
+        const result = await db.cards.add_card_to_deck([cardFront, cardBack, deck_id]);
         return res.status(201).send(result);
     },
 

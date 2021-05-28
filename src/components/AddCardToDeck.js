@@ -1,49 +1,39 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react';
 import axios from 'axios';
 
-class AddCardToDeck extends Component {
-    constructor() {
-        super();
-        this.state = {
-            card_front: '',
-            card_back: ''
-        }
+export default function AddCardToDeck(props) {
+    const [cardFront, setCardFront] = useState('');
+    const [cardBack, setCardBack] = useState('');
+
+    const handleCardFrontInput = (e) => {
+        setCardFront(e.target.value);
     }
 
-    handleCardFrontInput(e) {
-        this.setState({card_front: e.target.value});
+    const handleCardBackInput = (e) => {
+        setCardBack(e.target.value);
     }
 
-    handleCardBackInput(e) {
-        this.setState({card_back: e.target.value});
-    }
-
-    addCard() {
-        const {card_front, card_back} = this.state
+    let addCard = () => {
         axios
-            .post(`/api/flashcards/${this.props.match.params.deck_id}`, {
-                card_front,
-                card_back
-            })
-            .then(this.setState({card_front: '', card_back: ''}))
+            .post(`/api/flashcards/${props.match.params.deck_id}`, {cardFront, cardBack})
+            .then(console.log(cardFront, cardBack), setCardFront(''), setCardBack(''))
             .catch(error => {
                 alert(error)
             })
     }
 
-    render() {
         return (
             <div>
                 <h3 className='add-a-card'>Add a card to your deck</h3>
-                <h4>{this.props.match.params.name}</h4>
+                <h4>{props.match.params.name}</h4>
                 <section>
                     <h3>Front:</h3>
                     <input
                         type='text'
                         className='add-card-inputs'
                         placeholder='Card Front'
-                        onChange={e => this.handleCardFrontInput(e)}
-                        value={this.state.card_front}
+                        onChange={e => handleCardFrontInput(e)}
+                        value={cardFront}
                     ></input>
                 </section>
                 <section>
@@ -52,17 +42,14 @@ class AddCardToDeck extends Component {
                         type='text'
                         className='add-card-inputs'
                         placeholder='Card Back (Answer)'
-                        onChange={e => this.handleCardBackInput(e)}
-                        value={this.state.card_back}
+                        onChange={e => handleCardBackInput(e)}
+                        value={cardBack}
                     ></input>
                 </section>
                 <button
                 className='add-card-button'
-                onClick={() => this.addCard()}
+                onClick={() => addCard()}
                 >Add Card</button>
             </div>
         )
-    }
-}
-
-export default AddCardToDeck;
+};
