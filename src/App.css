@@ -174,3 +174,93 @@
 .mapped-cards-edit {
   margin: 20px;
 }
+
+/* Responsive Design (Tablet) */
+
+@media (min-width: 768px) {
+  .page-display {
+    height: 91.5vh;
+    background-color: white;
+    margin: 0% 10% 0% 10%;
+    text-align: center;
+  }
+
+  .landing-content {
+    padding-top: 5%;
+    display: inline-block;
+  }
+
+  .deck-display {
+    background-color: lightgray;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    margin-top: 0px;
+    margin-left: 25px;
+    margin-right: 25px;
+    border-radius: 5px;
+  }
+
+  .your-decks-header {
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    justify-content: center;
+  }
+}
+
+/* Responsive Design (Laptop/Desktop) */
+
+@media (min-width: 1024px) {
+  .page-display {
+    height: 88.2vh;
+    background-color: white;
+    margin: 2% 2% 0% 2%;
+    text-align: center;
+  }
+
+  .landing-content {
+    padding-top: 5%;
+    display: inline-block;
+    font-size: x-large;
+  }
+
+  .auth-input {
+    height: 30px;
+    width: 300px;
+    margin: 5px;
+  }
+
+  .auth {
+    padding-top: 5%;
+    font-size: larger;
+  }
+
+  .login-button {
+    height: 20px;
+    margin-top: 24px;
+    margin-right: 20px;
+  }
+
+  .deck-display {
+    background-color: lightgray;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    margin-top: 0px;
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+
+  .flashcard {
+    padding-top: 50px;
+    font-size: xx-large;
+  }
+
+  .mapped-cards-section {
+    overflow: scroll;
+    height: 40vh;
+    width: 100vh;
+    border: 1px solid grey;
+    margin: 1% 5% 1% 24%;
+  }
+}
