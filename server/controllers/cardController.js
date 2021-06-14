@@ -13,6 +13,13 @@ module.exports = {
         return res.status(201).send(result);
     },
 
+    getFlashcardAmount: async (req, res) => {
+        const {deck_id} = req.params;
+        const db = req.app.get('db');
+        const result = await db.cards.get_card_amount(deck_id);
+        return res.status(201).send(result);
+    },
+
     addCard: async (req, res) => {
         const {deck_id} = req.params
         const {cardFront, cardBack} = req.body;

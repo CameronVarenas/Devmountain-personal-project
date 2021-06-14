@@ -7,7 +7,7 @@ export default function MappedDecks(props) {
     const handleDeckNewNameInput = (e) => {
         setDeckNewName(e.target.value);
     }
-    console.log(deckNewName)
+    
     return (
         <section className='deck-display'>
         <div>

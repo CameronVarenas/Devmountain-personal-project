@@ -7,6 +7,7 @@ class CardList extends Component {
         super();
         this.state = {
             flashcardData: [],
+            deckInfo: [],
             card_front: '',
             card_back: '',
             card_id: null
@@ -17,6 +18,7 @@ class CardList extends Component {
 
     componentDidMount() {
         this.getAllFlashcards();
+        this.getCardAmount();
     }
 
     handleCardFrontInput(e) {
@@ -32,6 +34,17 @@ class CardList extends Component {
             .get(`api/flashcards/${this.props.match.params.deck_id}`)
             .then(res => {
                 this.setState({flashcardData: res.data});
+            })
+            .catch(error => {
+                alert(error);
+            })
+    }
+
+    getCardAmount() {
+        axios
+            .get(`api/card-amount/${this.props.match.params.deck_id}`)
+            .then(res => {
+                this.setState({deckInfo: res.data});
             })
             .catch(error => {
                 alert(error);
@@ -58,7 +71,7 @@ class CardList extends Component {
     deleteFlashcard(card_id) {
         axios
             .delete(`/api/flashcards/${card_id}`)
-            .then(() => this.getAllFlashcards())
+            .then(() => this.getAllFlashcards(), this.getCardAmount())
             .catch(error => {
                 alert(error)
             })
@@ -72,9 +85,14 @@ class CardList extends Component {
                 deleteFlashcard={this.deleteFlashcard}
             />
         })
+
+        const deckInfo = this.state.deckInfo.map(deck => {
+            return <h3>{deck.name} (Cards: {deck.card_amount})</h3>
+        })
+
         return (
             <div>
-                <h3 className='card-list-deck-name'>Your Flashcards</h3>
+                <h3 className='card-list-deck-name'>{deckInfo}</h3>
                 <section className='mapped-cards-section'>
                     <section className='mapped-cards-headers'>
                         <h5>Front:</h5>
